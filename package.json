@@ -1,0 +1,20 @@
+{
+  "name": "concentrationreact",
+  "version": "1.0.0",
+  "description": "Match the card game written in javascript",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sareh-safuan/concentration-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sareh-safuan/concentration-react/issues"
+  },
+  "homepage": "https://github.com/sareh-safuan/concentration-react#readme"
+}

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Sidenav from './Sidenav.jsx'
+import Content from './Content.jsx'
+import './index.css'
 
 function App() {
   return (
-    <div>
-      Hello Concentration
-      <img src="img/Bond.png" />
-    </div>
+    <Fragment>
+      <Sidenav />
+      <Content />
+    </Fragment>
   )
 }
 

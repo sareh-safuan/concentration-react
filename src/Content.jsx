@@ -6,25 +6,14 @@ class Content extends React.Component {
         super()
         this.state = {
             prev: { alt: '', idx: null },
-            images: [
-                { img: 'Bond', flip: true },
-                { img: 'Bond', flip: true },
-                { img: 'Dann', flip: true },
-                { img: 'Dann', flip: true },
-                { img: 'David', flip: true },
-                { img: 'David', flip: true },
-                { img: 'Frank', flip: true },
-                { img: 'Frank', flip: true },
-
-                { img: 'James', flip: true },
-                { img: 'James', flip: true },
-                { img: 'Jane', flip: true },
-                { img: 'Jane', flip: true },
-                { img: 'Joan', flip: true },
-                { img: 'Joan', flip: true },
-                { img: 'John', flip: true },
-                { img: 'John', flip: true }
-            ]
+            counter: 16,
+            files: [
+                'Bond', 'Dann', 'David', 'Frank', 'James', 'Jane', 'Jerry', 'Joan',
+                'John', 'Kid', 'Lisa', 'Marie', 'Maya', 'Stern', 'Terry', 'Truck',
+                'John', 'Kid', 'Lisa', 'Marie', 'Maya', 'Stern', 'Terry', 'Truck',
+                'Bond', 'Dann', 'David', 'Frank', 'James', 'Jane', 'Jerry', 'Joan'
+            ],
+            images: []
         }
 
         this.shuffleCards = this.shuffleCards.bind(this)
@@ -37,8 +26,22 @@ class Content extends React.Component {
         this.flipCards()
     }
 
+    componentDidUpdate() {
+        const { counter } = this.state
+
+        if (!counter) {
+            this.props.gameFinish()
+            this.shuffleCards()
+            this.flipCards()
+            this.setState({ counter: 16 })
+        }
+    }
+
     shuffleCards() {
-        const { images } = this.state
+        const { files } = this.state
+        const images = files.map((file) => {
+            return { img: file, flip: true }
+        })
         const length = images.length - 1
 
         for (let i = length; i > 0; i--) {
@@ -52,16 +55,19 @@ class Content extends React.Component {
     }
 
     flipCards() {
-        const images = this.state.images.map(({ img }) => {
-            return { img, flip: false }
-        })
-
         setTimeout(() => {
+            const images = this.state.images.map(({ img }) => {
+                return { img, flip: false }
+            })
+
             this.setState({ images })
         }, 5000)
     }
 
     clickHandler(e) {
+
+        if (e.target.tagName !== "IMG") return
+
         const idx = e.target.id
         const alt = e.target.getAttribute('alt')
         const { prev, images } = this.state
@@ -101,6 +107,7 @@ class Content extends React.Component {
                 }
 
                 this.setState({
+                    counter: this.state.counter - 1,
                     images,
                     prev: { alt: '', idx: null }
                 })
@@ -111,36 +118,37 @@ class Content extends React.Component {
     render() {
 
         const { images } = this.state
-        const cards = images.map((image, key) => {
+
+        if (!this.props.start) {
             return (
-                <Card
-                    image={image}
-                    id={key}
-                    clickHandler={this.clickHandler}
-                    key={key}
-                />
+                <div className="content">
+                    <h3>Click start button to start</h3>
+                </div>
             )
-        })
+        }
 
         return (
-            <div className="content">
-                {cards}
+            <div className="content" onClick={this.clickHandler}>
+                <div className="container">
+                    <Card images={images} />
+                </div>
             </div>
         )
     }
 }
 
-const Card = ({ image, id, clickHandler }) => {
+const Card = ({ images }) => {
 
-    const { img, flip } = image
-    const card = flip ? <img src={`img\\${img}.png`} id={id} alt={img} />
-        : <img src="img\frame.png" id={id} alt={img} />
+    const card = images.map((image, key) => {
+        const { img, flip } = image
+        const el = flip ?
+            (<img src={`img\\${img}.png`} id={key} alt={img} />)
+            : (<img src="img\frame.png" id={key} alt={img} />)
 
-    return (
-        <div className="card" onClick={clickHandler} >
-            {card}
-        </div>
-    )
+        return <div className="card" key={key}>{el}</div>
+    })
+
+    return card
 }
 
 export default Content

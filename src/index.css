@@ -6,23 +6,25 @@ body {
     margin: 0;
 }
 
-.sidenav {
-    height: 100%;
-    width: 220px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: gray;
-}
-
 #root {
     height: inherit;
 }
 
+.nav {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 .content {
-    margin-left: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
     display: flex;
     flex-wrap: wrap;
+    width: 60%;
 }
 
 .card {

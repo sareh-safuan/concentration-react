@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/concentration-react/static/css/main.9a403560.chunk.css",
+    "main.js": "/concentration-react/static/js/main.2ada6f48.chunk.js",
+    "main.js.map": "/concentration-react/static/js/main.2ada6f48.chunk.js.map",
+    "runtime-main.js": "/concentration-react/static/js/runtime-main.f76298d5.js",
+    "runtime-main.js.map": "/concentration-react/static/js/runtime-main.f76298d5.js.map",
+    "static/js/2.c36ea92d.chunk.js": "/concentration-react/static/js/2.c36ea92d.chunk.js",
+    "static/js/2.c36ea92d.chunk.js.map": "/concentration-react/static/js/2.c36ea92d.chunk.js.map",
+    "index.html": "/concentration-react/index.html",
+    "precache-manifest.80cab7178c28214a82892e12b7288c3d.js": "/concentration-react/precache-manifest.80cab7178c28214a82892e12b7288c3d.js",
+    "service-worker.js": "/concentration-react/service-worker.js",
+    "static/css/main.9a403560.chunk.css.map": "/concentration-react/static/css/main.9a403560.chunk.css.map",
+    "static/js/2.c36ea92d.chunk.js.LICENSE.txt": "/concentration-react/static/js/2.c36ea92d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f76298d5.js",
+    "static/js/2.c36ea92d.chunk.js",
+    "static/css/main.9a403560.chunk.css",
+    "static/js/main.2ada6f48.chunk.js"
+  ]
+}

@@ -17,13 +17,11 @@ class Content extends React.Component {
         }
 
         this.shuffleCards = this.shuffleCards.bind(this)
-        this.flipCards = this.flipCards.bind(this)
         this.clickHandler = this.clickHandler.bind(this)
     }
 
     componentDidMount() {
         this.shuffleCards()
-        this.flipCards()
     }
 
     componentDidUpdate() {
@@ -32,7 +30,6 @@ class Content extends React.Component {
         if (!counter) {
             this.props.gameFinish()
             this.shuffleCards()
-            this.flipCards()
             this.setState({ counter: 16 })
         }
     }
@@ -40,7 +37,7 @@ class Content extends React.Component {
     shuffleCards() {
         const { files } = this.state
         const images = files.map((file) => {
-            return { img: file, flip: true }
+            return { img: file, flip: false }
         })
         const length = images.length - 1
 
@@ -52,16 +49,6 @@ class Content extends React.Component {
 
         }
         this.setState({ images })
-    }
-
-    flipCards() {
-        setTimeout(() => {
-            const images = this.state.images.map(({ img }) => {
-                return { img, flip: false }
-            })
-
-            this.setState({ images })
-        }, 5000)
     }
 
     clickHandler(e) {
